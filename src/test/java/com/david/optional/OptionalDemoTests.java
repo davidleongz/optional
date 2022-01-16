@@ -1,4 +1,4 @@
-package com.david.optional.demo;
+package com.david.optional;
 
 
 import static org.junit.Assert.assertEquals;

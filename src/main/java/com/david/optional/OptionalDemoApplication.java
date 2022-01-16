@@ -1,4 +1,4 @@
-package com.david.optional.demo;
+package com.david.optional;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
