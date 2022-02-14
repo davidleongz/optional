@@ -5,6 +5,28 @@ import java.util.concurrent.TimeUnit;
 
 public class OrElseAndOrElseGetDemo {
 
+    public static void main(String[] args) {
+
+        String message = "Do only what you need to do and do it only when you need to";
+
+        String veryImportantMessage = Optional.ofNullable(message)
+                .filter(text -> !text.isEmpty())
+                .map(String::toUpperCase)
+                .orElse(recoverMessageFromSource());
+
+        printIfAny(veryImportantMessage);
+
+        message = "Make It Better!";
+
+        veryImportantMessage = Optional.ofNullable(message)
+                .filter(text -> !text.isEmpty())
+                .map(String::toUpperCase)
+                .orElseGet(OrElseAndOrElseGetDemo::recoverMessageFromSource);
+
+        printIfAny(veryImportantMessage);
+
+    }
+
     public static String recoverMessageFromSource() {
 
         try {
@@ -27,25 +49,4 @@ public class OrElseAndOrElseGetDemo {
                 });
     }
 
-    public static void main(String[] args) {
-
-        String message = "Do only what you need to do and do it only when you need to";
-
-        String veryImportantMessage = Optional.ofNullable(message)
-                .filter(text -> !text.isEmpty())
-                .map(String::toUpperCase)
-                .orElse(recoverMessageFromSource());
-
-        printIfAny(veryImportantMessage);
-
-        message = "Make It Better!";
-
-        veryImportantMessage = Optional.ofNullable(message)
-                .filter(text -> !text.isEmpty())
-                .map(String::toUpperCase)
-                .orElseGet(OrElseAndOrElseGetDemo::recoverMessageFromSource);
-
-        printIfAny(veryImportantMessage);
-
-    }
 }
