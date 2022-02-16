@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.david.optional.dto.MembershipLevelEnum.GOLD;
 import static com.david.optional.dto.MembershipLevelEnum.PLATINUM;
@@ -18,23 +20,21 @@ public class OptionalWithMapFlatMapAndFilterDemo {
 
     public static void main(String[] args) {
 
-        MemberCardDTO card = new MemberCardDTO("1");
-        getDiscountWithoutOptional(card);
-        getDiscountWithOptional(card);
-
         extractUsbVersionWithFlatMap();
 
         rejectingValuesUsingFilterMethod();
 
         extractingAndTransformingValuesUsingMapMethod();
 
+        MemberCardDTO card = new MemberCardDTO("1");
+        getDiscountWithoutOptional(card);
+        getDiscountWithOptional(card);
+
     }
 
     private static void extractUsbVersionWithFlatMap() {
 
-        Optional<ComputerDTO> computer = Optional.ofNullable(new ComputerDTO());
-        List<ComputerDTO> computerList = new ArrayList<ComputerDTO>();
-        computerList.add(computer.get());
+        Optional<ComputerDTO> computer = Optional.of(new ComputerDTO());
 
         String version = "UNKNOWN";
         if (computer != null) {
